@@ -1,0 +1,51 @@
+*  {font-family: Tahoma}
+
+li { list-style-type: square }
+
+p { text-align: justify }
+
+#price {
+    color: red;
+    font-weight: bold;
+}
+
+#release {
+    text-decoration: underline
+}
+
+.intro{
+    font-style: italic;
+}
+
+td > img {
+    border-color: blue;
+    border-style: solid;
+}
+
+td > img:hover {
+    border-color: red;
+    border-style: solid;
+}
+
+h1 + h2 {
+    letter-spacing: 5px;
+}
+
+td[colspan="2"]>p {
+    font-size: small;
+}
+
+p ~ p {
+    color: gray;
+}
+
+body {
+    background-image: url(okladka.jpg);
+    background-repeat: repeat-y;
+    margin: 5em 10em 5em 10em;
+}
+
+/*h1 { color: blue }
+h1 { color: green }
+h1 { color: yellow }*/
+h1 { color: red }
