@@ -1,0 +1,62 @@
+* {
+  font-size: 16px;
+}
+
+img {
+  float: left;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+header h1 {
+  font-size: 200%;
+}
+
+div {
+  position: relative;
+  background: gray;
+  border-color: black;
+  border-style: solid;
+  margin: 20px 10px 20px 10px;
+}
+
+div h1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 150%;
+  background: red;
+  border-color: black;
+  border-style: solid;
+}
+
+#five {
+  position: sticky;
+  bottom: 0;
+  text-align: center;
+}
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
+  main {
+    width: 100%;
+  }
+}
+/* Tablet */
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+  main {
+    width: 91.6%;
+  }
+}
+/* Desktop */
+@media only screen and (min-width: 1024px) {
+  main {
+    width: 66.6%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
