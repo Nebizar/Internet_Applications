@@ -3,23 +3,24 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>JavaScript</title>
+		
+		<link rel="stylesheet" type="text/css" href="style.css" title="Arkusz stylów CSS">
 	</head>
 	<body>
 		<form name="dane_osobowe">
 		<table>
-			<tr><td>Imię</td><td><input type="text" name="f_imie"></td></tr>
-			<span class="err" id="e_imie" />
+			<tr><td>Imię</td><td><input type="text" name="f_imie"></td><td><span class="err" id="e_imie" /></td></tr>
 			<tr><td>Nazwisko</td><td><input type="text" name="f_nazwisko"></td></tr>
 			<tr>
 				<td>Płeć</td>
 				<td>
-					<input name="f_plec" value="f_k" checked type="radio" />kobieta<br />
-					<input name="f_plec" value="f_m" type="radio" />mężczyzna
+					<input name="f_plec" value="f_k" checked type="radio" onclick="showElement('NazwiskoPanienskie')"/>kobieta<br />
+					<input name="f_plec" value="f_m" type="radio" onclick="hideElement('NazwiskoPanienskie')"/>mężczyzna
 				</td>
 			</tr>
-			<tr><td>N. panieńskie</td><td><input type="text" name="f_nazwisko_p"></td></tr>
+			<tr><td>N. panieńskie</td><td><span id="NazwiskoPanienskie"><input type="text" name="f_nazwisko_p"></span></td></tr>
 			<tr><td>E-mail</td><td><input type="text" name="f_email"></td></tr>
-			<tr><td>Kod pocztowy</td><td><input type="text" name="f_kod"></td></tr>
+			<tr><td>Kod pocztowy</td><td><input type="text" name="f_kod" onkeyup="checkZIPCodeRegEx(form.elements['f_kod'].value)"></td><td><span id="kod" /></tr>
 			<tr><td>Ulica/Osiedle</td><td><input type="text" name="f_ulica"></td></tr>
 			<tr><td>Miasto</td><td><input type="text" name="f_miasto"></td></tr>
 			<tr><td>Uwagi</td><td><textarea rows="5" cols="15" name="uwagi"></textarea>

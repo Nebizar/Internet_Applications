@@ -44,6 +44,29 @@ function checkEmail(str) {
     }
 }
 
+function checkEmailRegEx(str) {
+    var email = /[a-zA-Z_0-9\.]+@[a-zA-Z_0-9\.]+\.[a-zA-Z][a-zA-Z]+/;
+    if (email.test(str))
+        return true;
+    else {
+        alert("Podaj właściwy e-mail");
+        return false;
+    }
+}
+
+function checkZIPCodeRegEx(str){
+    var code = /[0-9]{2}-[0-9]{3}/;
+    if(code.test(str)){
+        document.getElementById("kod").innerHTML = "OK";
+        document.getElementById("kod").className = "green";
+        return false;
+    }else{
+        document.getElementById("kod").innerHTML = "ZLE";
+        document.getElementById("kod").className = "red";
+        return true;
+    }
+}
+
 function checkString(str, msg){
     if(isEmpty(str) || isWhiteSpace(str)) {
         alert(msg);
@@ -52,17 +75,43 @@ function checkString(str, msg){
     return true;
 }
 
+var errorField = "";
+
+function startTimer(fName) {
+    errorField = fName;
+    window.setTimeout("clearError(errorField)", 5000);
+}
+
+function clearError(objName) {
+    document.getElementById(objName).innerHTML = "";
+}
+
+function checkStringAndFocus(obj, msg) {
+    var str = obj.value;
+    var errorFieldName = "e_" + obj.name.substr(2, obj.name.length);
+    if (isWhiteSpace(str) || isEmpty(str)) {
+        document.getElementById(errorFieldName).innerHTML = msg;
+        obj.focus();
+        startTimer(errorFieldName);
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 function validate(form){
-    if(!checkString(form.elements["f_imie"].value, "Podaj imię!")){
+    if(!checkStringAndFocus(form.elements["f_imie"], "Podaj imię!")){
         return false;
     }
     if(!checkString(form.elements["f_nazwisko"].value, "Podaj nazwisko!")){
         return false;
     }
-    if(!checkEmail(form.elements["f_email"].value)){
+    if(!checkEmailRegEx(form.elements["f_email"].value)){
         return false;
     }
-    if(!checkString(form.elements["f_kod"].value, "Podaj kod!")){
+    if(checkZIPCodeRegEx(form.elements["f_kod"].value, "Podaj kod!")){
+        alert("Podaj własciwy kod!");
         return false;
     }
     if(!checkString(form.elements["f_ulica"].value, "Podaj ulice!")){
@@ -72,4 +121,11 @@ function validate(form){
         return false;
     }
     return true;
+}
+
+function showElement(e) {
+    document.getElementById(e).style.visibility = 'visible';
+}
+function hideElement(e) {
+    document.getElementById(e).style.visibility = 'hidden';
 }
