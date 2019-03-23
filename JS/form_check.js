@@ -101,26 +101,46 @@ function checkStringAndFocus(obj, msg) {
 }
 
 function validate(form){
+    var check = true;
+    var tab = new Array();
+    tab = [true,true,true,true,true,true,true,true,true,true,true]
+    console.log(form.length);
+
     if(!checkStringAndFocus(form.elements["f_imie"], "Podaj imię!")){
-        return false;
+        tab[0] = false;
+        check = false;
     }
     if(!checkString(form.elements["f_nazwisko"].value, "Podaj nazwisko!")){
-        return false;
+        tab[1] = false;
+        check = false;
     }
     if(!checkEmailRegEx(form.elements["f_email"].value)){
-        return false;
+        tab[5] = false;
+        check = false;
     }
     if(checkZIPCodeRegEx(form.elements["f_kod"].value, "Podaj kod!")){
         alert("Podaj własciwy kod!");
-        return false;
+        tab[6] = false;
+        check = false;
     }
     if(!checkString(form.elements["f_ulica"].value, "Podaj ulice!")){
-        return false;
+        tab[7] = false;
+        check = false;
     }
     if(!checkString(form.elements["f_miasto"].value, "Podaj miasto!")){
-        return false;
+        tab[8] = false;
+        check = false;
     }
-    return true;
+    if(check===false){
+        var i;
+        for(i=0;i<form.length;i++){
+            if(tab[i] === false) {
+                form.elements.item(i).className = "wrong";
+            }
+        }
+    }
+
+    return check;
 }
 
 function showElement(e) {
@@ -128,4 +148,49 @@ function showElement(e) {
 }
 function hideElement(e) {
     document.getElementById(e).style.visibility = 'hidden';
+}
+
+function alterRows(i, e) {
+    if (e) {
+        if (i % 2 == 1) {
+            e.setAttribute("style", "background-color: Aqua;");
+        }
+        e = e.nextSibling;
+        while (e && e.nodeType != 1) {
+            e = e.nextSibling;
+        }
+        alterRows(++i, e);
+    }
+}
+
+alterRows(1, document.getElementsByTagName("tr")[0]);
+
+function nextNode(e) {
+    while (e && e.nodeType != 1) {
+        e = e.nextSibling;
+    }
+    return e;
+}
+
+function prevNode(e) {
+    while (e && e.nodeType != 1) {
+        e = e.previousSibling;
+    }
+    return e;
+}
+
+function swapRows(b) {
+    var tab = prevNode(b.previousSibling);
+    var tBody = nextNode(tab.firstChild);
+    var lastNode = prevNode(tBody.lastChild);
+    tBody.removeChild(lastNode);
+    var firstNode = nextNode(tBody.firstChild);
+    tBody.insertBefore(lastNode, firstNode);
+}
+
+function cnt(form, msg, maxSize) {
+    if (form.value.length > maxSize)
+        form.value = form.value.substring(0, maxSize);
+    else
+        msg.innerHTML = maxSize - form.value.length;
 }

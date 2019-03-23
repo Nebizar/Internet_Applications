@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" /><title>JavaScript</title>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="parsley.js"></script>
+	</head>
+<body>
+	<form parsley-validate>
+	<table>
+		<tr><td>Imię</td><td><input type="text" name="f_imie" parsley-required="true" parsley-minlength="5"></td></tr>
+		<tr><td>E-mail</td><td><input type="text" name="f_email" parsley-required="true" parsley-type="email"></td></tr>
+		<tr><td>Kod pocztowy</td><td><input type="text" name="f_kod" parsley-required="true" parsley-minlength="6" parsley-maxlength="6"></td></tr>
+		<tr><td>Miasto</td><td><input type="text" name="f_miasto" parsley-required="true"></td></tr>
+		<tr><td colspan="2"><input type="submit" value="Prześlij"></td></tr>
+	</table>
+	</form>
+</body>
+</html>
