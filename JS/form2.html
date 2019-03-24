@@ -3,18 +3,22 @@
 	<head>
 		<meta charset="utf-8" /><title>JavaScript</title>
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="parsley.js"></script>
+		<link rel="stylesheet" type="text/css" href="parsley.css">
 	</head>
 <body>
-	<form parsley-validate>
+	<form id="signup_form">
 	<table>
-		<tr><td>Imię</td><td><input type="text" name="f_imie" parsley-required="true" parsley-minlength="5"></td></tr>
-		<tr><td>E-mail</td><td><input type="text" name="f_email" parsley-required="true" parsley-type="email"></td></tr>
-		<tr><td>Kod pocztowy</td><td><input type="text" name="f_kod" parsley-required="true" parsley-minlength="6" parsley-maxlength="6"></td></tr>
-		<tr><td>Miasto</td><td><input type="text" name="f_miasto" parsley-required="true"></td></tr>
+		<tr><td>Imię</td><td><input type="text" name="f_imie" data-parsley-required data-parsley-minlength="5"></td></tr>
+		<tr><td>E-mail</td><td><input type="text" name="f_email" data-parsley-required data-parsley-type="email"></td></tr>
+		<tr><td>Kod pocztowy</td><td><input type="text" name="f_kod" data-parsley-required data-parsley-length="[6,6]"></td></tr>
+		<tr><td>Miasto</td><td><input type="text" name="f_miasto" data-parsley-required></td></tr>
 		<tr><td colspan="2"><input type="submit" value="Prześlij"></td></tr>
 	</table>
 	</form>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="parsley.js"></script>
+	<script type="text/javascript">
+		$('#signup_form').parsley();
+	</script>
 </body>
 </html>
