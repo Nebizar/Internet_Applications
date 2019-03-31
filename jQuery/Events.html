@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 		function edit() {
 			$('button').trigger('asdf');
-			//$('*').unbind();
+			
 			var row = $(this);
 			row.html('<input id="edit" value="' + row.text() + '">');
 			$('#edit').blur(function () {
@@ -17,6 +17,7 @@
 		}
 		$(function () {
 			$('button').bind('asdf', function () { alert('Asdf!'); });
+			//$('*').unbind();
 			$('td').one('click', edit);
 		}); 
 	</script>

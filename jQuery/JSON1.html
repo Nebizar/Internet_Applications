@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+ <title>JSON</title>
+ <script type="text/javascript"
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ <script type="text/javascript">
+ var d =
+ { "Pracownicy": {
+ "Pracownik": [
+ { "Imie": "Maciej", "Nazwisko": "Zakrzewicz" },
+ { "Imie": "Maciej", "Nazwisko": "Piernik" }
+ ]
+ }
+ };
+ $(function () {
+ for (var i = 0; i < d.Pracownicy.Pracownik.length; i++) {
+ $('#x').append('<div>' + d.Pracownicy.Pracownik[i].Imie + ' ' +
+d.Pracownicy.Pracownik[i].Nazwisko + '</div>');
+ }
+ });
+ </script>
+</head>
+<body>
+ <h1>My favorite teachers</h1>
+ <div id="x"></div>
+</body>
+</html>
