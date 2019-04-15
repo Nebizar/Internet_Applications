@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" title="CSS file">
     <script src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
+	//wiazanie zmiennych i transakcje TODO
         var inCart = {};
 		var price = 0;
         function addToCart(x) {
@@ -75,8 +76,22 @@
     <?php
 	if ($_POST['buyingCheck']=='1') {
 		$rowCount = count($_POST['item']);
+		$check = 0;
+		$db->begin_transaction();
+		$q = $db->prepare("delete from przedmioty where nazwa like ?");
 		for ($i = 0; $i < $rowCount; $i++) {
-			$db->query("delete from przedmioty where nazwa like '".$_POST['item'][$i]."';");
+			$q -> bind_param("s",$_POST['item'][$i]);
+			$q->execute();
+			if( $db->affected_rows != 1){
+				$check = 1;
+			}
+			//$db->query("delete from przedmioty where nazwa like '".$_POST['item'][$i]."';");
+		}
+		if($check == 1){
+			$db->rollback();
+		}
+		else{
+			$db->commit();
 		}
 		session_unset();
 		session_destroy();
