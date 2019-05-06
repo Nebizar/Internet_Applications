@@ -18,6 +18,12 @@ namespace MVCTutorial
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Square",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Songs", action = "Square", id = 23 }
+            );
         }
     }
 }
