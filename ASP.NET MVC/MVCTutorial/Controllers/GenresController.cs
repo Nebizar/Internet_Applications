@@ -96,7 +96,7 @@ namespace MVCTutorial.Controllers
             }
             return View(genre);
         }
-        [HttpDelete]
+        /*[HttpDelete]
         // GET: Genres/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -110,12 +110,11 @@ namespace MVCTutorial.Controllers
                 return HttpNotFound();
             }
             return View(genre);
-        }
+        }*/
 
         // POST: Genres/Delete/5
         [HttpDelete, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
             Genre genre = db.Genres.Find(id);
             db.Genres.Remove(genre);

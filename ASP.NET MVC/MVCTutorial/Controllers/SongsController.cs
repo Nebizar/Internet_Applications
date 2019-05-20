@@ -99,9 +99,7 @@ namespace MVCTutorial.Controllers
         }
 
         // POST: Songs/Delete/5
-        //
         [HttpDelete, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             Song song = db.Songs.Find(id);
