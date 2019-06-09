@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= "Notes"
+  p Welcome to Personal Notebook. Check your notes or create new one.
+  p
+    a(href="/editor") New document
+
+  table
+      each note in mylist
+        tr
+          td=note.content
+          td=note.timestamp
+  a(href="./logout") Log out

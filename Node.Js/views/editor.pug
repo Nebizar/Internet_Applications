@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1 New document
+    form(name="doc" method="post" action="/editor")
+     table
+        tr
+            td
+                textarea(name="content" rows="10" cols="50")
+        tr
+            td
+                input(type="submit" value="Save")
+    a(href="./") Cancel

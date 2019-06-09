@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1 Please log in
+    form(name="login" method="post" action="/login")
+        table
+            tr
+                td Username:
+                td
+                    input(type="text" name="username")
+            tr
+                td(colspan="2")
+                    input(type="submit" value="Log in")
+    

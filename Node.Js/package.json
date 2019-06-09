@@ -9,6 +9,13 @@
   "author": "Krzysztof Pasiewicz",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-session": "^1.16.1",
+    "fs": "0.0.1-security",
+    "http-errors": "^1.7.2",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "pug": "^2.0.3"
   }
 }
