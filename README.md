@@ -9,4 +9,4 @@ Every folder contains mini-project on different technology as folder name specif
 Special case: 
 
 * HTML_CSS - simple website to familiarize with html/css,
-* HTML_CSS - responsive website for every window size
+* HTML_CSS_2 - responsive website for every window size
